@@ -87,6 +87,7 @@ public class OtherPeople : MonoBehaviour
 
 
 
+
             FindObjectOfType<CameraSwtiching>().isSwtichManipulator = false;
 
             playerMovement.hasAbility = false;
