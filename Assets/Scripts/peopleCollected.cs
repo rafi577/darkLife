@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class peopleCollected : MonoBehaviour
 {
+
+    [Header("Manipulated people")]
+    public int totalPeople;
+
+
+    [Header("manipulated people you need")]
     public int peopleCount = 0;
     public int maxPeople = 3;
 
@@ -36,5 +43,16 @@ public class peopleCollected : MonoBehaviour
 
         }
 
+        if (totalPeople < (maxPeople - peopleCount))
+        {
+            Invoke("youLose", 1f);
+        }
+
+    }
+
+
+    void youLose()
+    {
+        SceneManager.LoadScene(1);
     }
 }

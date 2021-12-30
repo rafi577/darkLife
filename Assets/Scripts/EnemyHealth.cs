@@ -56,6 +56,9 @@ public class EnemyHealth : MonoBehaviour
         if (other.gameObject.tag == "lightStar")
         {
             TakeDamage(1f);
+            GameObject particle = Instantiate(GameObject.Find("die_effect"), transform.position, Quaternion.identity);
+            particle.GetComponent<ParticleSystem>().Play();
+            Destroy(particle, 1f);
         }
     }
 

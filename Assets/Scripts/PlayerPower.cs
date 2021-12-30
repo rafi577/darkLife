@@ -67,6 +67,7 @@ public class PlayerPower : MonoBehaviour
     void FixedUpdate()
     {
         //bool ablitie = FindObjectOfType<PlayerMovement>().hasAbility;
+        rb2d.velocity = new Vector2(0, 0);
 
         if (onAblities)
         {
@@ -85,7 +86,6 @@ public class PlayerPower : MonoBehaviour
             else
             {
                 Move();
-
                 rb2d.velocity = new Vector2(0, 0);
             }
 
@@ -137,8 +137,8 @@ public class PlayerPower : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             //transform.position = Vector2.MoveTowards(transform.position, transform.position + new Vector3(5f, 0, 0), 10f * Time.deltaTime);
-            TakeDamage(2f);
-            HitEffect();
+            //TakeDamage(2f);
+            //HitEffect();
         }
     }
 
@@ -168,6 +168,7 @@ public class PlayerPower : MonoBehaviour
 
         FindObjectOfType<OtherPeople>().isEffected = false;
         Destroy(gameObject);
+        FindObjectOfType<peopleCollected>().totalPeople--;
     }
 
 
@@ -176,11 +177,12 @@ public class PlayerPower : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             isGround = true;
-            //GameObject.Find("fly_sound").GetComponent<AudioSource>().Stop();
-            //anim.SetBool("isJump", false);
         }
         if (other.gameObject.tag == "Enemy")
         {
+
+            TakeDamage(2f);
+            HitEffect();
 
         }
 
@@ -192,7 +194,7 @@ public class PlayerPower : MonoBehaviour
         if (other.gameObject.tag == "darkStar")
         {
 
-            TakeDamage(10f);
+            TakeDamage(2f);
             HitEffect();
 
         }
@@ -216,6 +218,7 @@ public class PlayerPower : MonoBehaviour
             isGround = false;
         }
     }
+
 
 
 }
